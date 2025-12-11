@@ -1,17 +1,17 @@
 #pragma once
+
+#include "Utils.h"
 #include "Card.h"
-#include <vector>
 
 class Hand
 {
 public:
 
-	void AddCard(const Card& c) {}
-	int GetValue() const {}
-	void Clear() {}
+	void AddCard(Card* c);
+	int GetValue() const;
+	void Clear();
 
 private:
 
-	std::vector<Card> cards;
+	VECTOR(Card*) cards;
 };
-

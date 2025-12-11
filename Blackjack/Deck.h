@@ -5,8 +5,8 @@ class Deck
 {
 public:
 
-	static Deck& GetInstance();
-	Card GetCard(int value);
+	static Deck* GetInstance();
+	Card* GetCard();
 	void Reset();
 
 	bool CanCreate(int value) const;

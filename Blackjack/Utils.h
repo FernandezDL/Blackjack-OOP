@@ -5,6 +5,9 @@
 #include <iostream>
 #include <limits>
 #include <random>
+#include <vector>
+#include <algorithm>
+#include <memory>
 
 // Log definitions
 #define LOG(X) std::cout << X
@@ -12,7 +15,7 @@
 #define LOG_EMPTY_LN std::cout << std::endl
 
 // String definition
-#define string std::string
+#define STRING std::string
 
 // Input definitions
 #define INPUT_WITH_ERROR(INPUT_TEXT, INPUT_VAR, ERROR_MESSAGE)\
@@ -39,3 +42,13 @@ INPUT_WITH_ERROR(INPUT_TEXT, INPUT_VAR, "Invalid input. Please try again!");
 // Random Number Generator definition
 #define RNG std::mt19937
 #define DIST std::uniform_int_distribution<int>
+
+// Vector
+#define VECTOR(X) std::vector<X>
+
+// Smart Pointers
+#define UNIQUE_PTR(X) std::unique_ptr<X>
+#define SHARED_PTR(X) std::shared_ptr<X>
+#define WEAK_PTR(X) std::weak_ptr<X>
+#define MAKE_UNIQUE(X) std::make_unique<X>
+#define MAKE_SHARED(X) std::make_shared<X>

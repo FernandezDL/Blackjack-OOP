@@ -7,8 +7,10 @@ class Participant
 
 public:
 
-	void GiveCard(const Card& c);
-	Hand& GetHand();
+	Participant();
+
+	void GiveCard(Card* c);
+	Hand* GetHand();
 
 private:
 

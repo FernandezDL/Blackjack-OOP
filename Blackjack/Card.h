@@ -1,10 +1,16 @@
 #pragma once
-#include <vector>
+
+#include "Deck.h"
+
+class Deck;
 
 class Card
 {
 public:
 
+	friend Deck;
+
+	Card() = delete;
 	int GetValue();
 
 private:
