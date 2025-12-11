@@ -1,6 +1,8 @@
-#include "Deck.h"
 #include <cstdlib>
 #include <ctime>
+#include "Deck.h"
+#include "Hand.h"
+
 
 // initialize static instance pointer
 Deck* Deck::instance = nullptr;
@@ -44,6 +46,7 @@ Card* Deck::GetCard()
     } while (!CanCreate(value));
 
     valueCount[value - 1]++;
+    drawnCards++;
 
     return new Card(value);
 }
@@ -51,15 +54,34 @@ Card* Deck::GetCard()
 // Reset drawn cards
 void Deck::Reset()
 {
+    for (int i = 0; i < 11; i++)
+        valueCount[i] = 0;
+}
+
+// Reset drawn cards
+void Deck::Reset(VECTOR(Participant*) participants)
+{
 	for (int i = 0; i < 11; i++)
 		valueCount[i] = 0;
+
+    for (Participant* participant : participants)
+    {
+        Hand* participantHand = participant->GetHand();
+
+        for (Card* card : participantHand->GetCards()) 
+            valueCount[card->GetValue() - 1]++;
+    }
 }
 
 // Check if a card with this value can still be created (max 4)
 bool Deck::CanCreate(int value) const
 {
+    if (drawnCards >= TOTAL_CARDS)
+        return false;
+
 	if (value < 1 || value > 11)
 		return false;
 
+    if (value == 10) return valueCount[value - 1] < 16;
 	return valueCount[value - 1] < 4;
 }

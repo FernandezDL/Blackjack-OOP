@@ -19,6 +19,11 @@ int Hand::GetValue() const
 	return value;
 }
 
+VECTOR(Card*) Hand::GetCards() const
+{
+	return cards;
+}
+
 // Clears the hand
 void Hand::Clear()
 {
