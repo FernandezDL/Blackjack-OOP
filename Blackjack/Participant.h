@@ -4,11 +4,13 @@
 
 class Participant
 {
+
 public:
-	void giveCard(const Card& c) {}
-	Hand& getHand() {}
+
+	void GiveCard(const Card& c);
+	Hand& GetHand();
 
 private:
+
 	Hand hand;
 };
-

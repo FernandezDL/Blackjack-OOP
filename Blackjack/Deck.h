@@ -4,15 +4,17 @@
 class Deck
 {
 public:
-	static Deck& getInstance() {}
-	bool canCreate(int value) const {}
-	Card createCard(int value) {}
-	void reset() {}
+
+	static Deck& GetInstance();
+	Card GetCard(int value);
+	void Reset();
+
+	bool CanCreate(int value) const;
 
 private:
+
+	Deck();
+
 	int valueCount[11];
 	static Deck* instance;
-
-	Deck() {};
 };
-

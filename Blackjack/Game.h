@@ -6,14 +6,15 @@
 class Game
 {
 public:
+
 	Game() {}
-	void dealToPlayer(int value) {}
-	void dealToDealer(int value) {}
-	void start() {}
+	void DealToPlayer(int value);
+	void DealToDealer(int value);
+	void Start();
 
 private:
+
 	Player player;
 	Dealer dealer;
 	Graphics graphics;
 };
-

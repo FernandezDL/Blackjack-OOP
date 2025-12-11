@@ -5,11 +5,13 @@
 class Hand
 {
 public:
-	void addCard(const Card& c) {}
-	int getValue() const {}
-	void clear() {}
+
+	void AddCard(const Card& c) {}
+	int GetValue() const {}
+	void Clear() {}
 
 private:
+
 	std::vector<Card> cards;
 };
 

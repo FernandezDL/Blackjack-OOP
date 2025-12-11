@@ -4,12 +4,11 @@
 class Card
 {
 public:
-	Card() {}
-	void addCard() {}
-	int getValue() {}
-	void Clear() {}
+
+	int GetValue();
 
 private:
-	std::vector<Card> cards;
-};
 
+	Card(int Value);
+	int value;
+};

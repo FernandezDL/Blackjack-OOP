@@ -1,7 +1,10 @@
 #pragma once
 #include "Deck.h"
+#include "Participant.h"
 
-class Dealer {
+class Dealer : public Participant
+{
 public:
-	void play(Deck& deck) {}
+
+	void Play(Deck& deck);
 };
