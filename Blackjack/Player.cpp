@@ -1,15 +1,19 @@
 #include "Player.h"
 #include "Participant.h"
-#include "Utils.h"
-#include <iostream>
 #include "Graphics.h"
 
-void Player::GiveCard(Card* card) 
+Player::Player(DisplayCardsSignature displaySignature)
 {
-	Graphics graph;
+	hand = new Hand();
+	OnDisplayCard = displaySignature;
+}
 
+void Player::GiveCard(Card* card)
+{
 	Participant::GiveCard(card);
 
-	LOG_LN("----- Card has been deal to the player -----");
-	graph.PrintCardFace(std::cout, 5);
+	if (OnDisplayCard)
+	{
+		OnDisplayCard(card->GetValue());
+	}
 }

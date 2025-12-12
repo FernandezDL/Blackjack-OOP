@@ -3,9 +3,10 @@
 // Initialize Game's components
 Game::Game()
 {
-	player = Player();
-	dealer = Dealer();
 	graphics = Graphics();
+
+	player = Player(std::bind(&Graphics::PrintCardFace, &graphics, std::placeholders::_1));
+	dealer = Dealer(std::bind(&Graphics::PrintCardFace, &graphics, std::placeholders::_1));
 }
 
 // Deal a card to the Player

@@ -17,6 +17,9 @@
 // String definition
 #define STRING std::string
 
+// Cout definition
+#define COUT std::cout
+
 // Input definitions
 #define INPUT_WITH_ERROR(INPUT_TEXT, INPUT_VAR, ERROR_MESSAGE)\
 do\

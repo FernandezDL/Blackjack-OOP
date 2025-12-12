@@ -9,10 +9,6 @@ int main()
 	const int gameEndCondition = 21;
 	const int initialCardsPerParticipant = 2;
 
-	// Subscriptions
-
-	// TODO: Add subscriptions here
-
 	// Game variables
 	bool deal = false;
 	int counter = 0;
@@ -38,19 +34,21 @@ int main()
 
 		// Player's turn
 		game.UpdateCurrentTurn(CurrentTurn::Input);
-
 		STRING continueInput;
 		do
 		{
-			isGameOver = game.CheckLoseCondition(gameEndCondition);
-
 			CONTINUE_INPUT(continueInput);
 			if (continueInput == "y")
 			{
 				game.DealToPlayer();
 				//TODO: Print total Player's Hand value
+				continueInput = "";
 			}
-		} while (continueInput != "n" || !isGameOver);
+
+			isGameOver = game.CheckLoseCondition(gameEndCondition);
+			if (isGameOver) break;
+		}
+		while (continueInput != "n");
 
 		if (!isGameOver)
 		{
@@ -58,11 +56,13 @@ int main()
 			game.UpdateCurrentTurn(CurrentTurn::AI);
 			do
 			{
-				isDealerWin = game.CheckDealerWin(gameEndCondition);
-
 				game.DealToDealer();
 				// TODO: Print total Dealer's Hand value
-			} while (!game.CheckLoseCondition(gameEndCondition) || isDealerWin);
+
+				isDealerWin = game.CheckDealerWin(gameEndCondition);
+				if (isDealerWin) break;
+
+			} while (!game.CheckLoseCondition(gameEndCondition));
 
 			if (isDealerWin)
 			{

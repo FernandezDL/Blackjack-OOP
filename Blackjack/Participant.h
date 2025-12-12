@@ -2,21 +2,24 @@
 
 #include "Hand.h"
 #include "Card.h"
+#include <functional>
 
 class Card;
 class Hand;
+
+using DisplayCardsSignature = std::function<void(int)>;
 
 class Participant
 {
 
 public:
 
-	Participant();
-
 	virtual void GiveCard(Card* c);
 	Hand* GetHand();
 
-private:
+protected:
 
 	Hand* hand;
+
+	DisplayCardsSignature OnDisplayCard = nullptr;
 };
