@@ -30,3 +30,32 @@ void Game::Start()
 	player.GetHand()->Clear();
 	dealer.GetHand()->Clear();
 }
+
+void Game::UpdateCurrentTurn(CurrentTurn current)
+{
+	currentTurn = current;
+}
+
+// Returns true if Participant lose the game
+bool Game::CheckLoseCondition(int loseCon)
+{
+	switch (currentTurn)
+	{
+	case Input:
+		return player.GetHand()->GetValue() > loseCon;
+		break;
+	case AI:
+		return dealer.GetHand()->GetValue() > loseCon;
+		break;
+	}
+}
+
+bool Game::CheckDealerWin(int winCon)
+{
+	return player.GetHand()->GetValue() == winCon;
+}
+
+CurrentTurn Game::GetCurrentTurn()
+{
+	return currentTurn;
+}

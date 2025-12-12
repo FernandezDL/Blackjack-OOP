@@ -52,3 +52,17 @@ INPUT_WITH_ERROR(INPUT_TEXT, INPUT_VAR, "Invalid input. Please try again!");
 #define WEAK_PTR(X) std::weak_ptr<X>
 #define MAKE_UNIQUE(X) std::make_unique<X>
 #define MAKE_SHARED(X) std::make_shared<X>
+
+// Project Specifics
+
+#define CONTINUE_INPUT(CONTINUE)\
+while (CONTINUE != "n" && CONTINUE != "y")\
+{\
+    INPUT("Do you wish to draw another card? (y/n)", CONTINUE)\
+}
+
+#define PLAYAGAIN_INPUT(CONTINUE)\
+while (CONTINUE != "n" && CONTINUE != "y")\
+{\
+    INPUT("Do you wish to keep playing? (y/n)", CONTINUE)\
+}
