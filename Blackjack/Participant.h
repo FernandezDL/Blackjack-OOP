@@ -13,7 +13,7 @@ public:
 
 	Participant();
 
-	void GiveCard(Card* c);
+	virtual void GiveCard(Card* c);
 	Hand* GetHand();
 
 private:

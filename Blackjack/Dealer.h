@@ -6,6 +6,6 @@
 class Dealer : public Participant
 {
 public:
-
+	void GiveCard(Card* card);
 	void Play(Deck& deck);
 };

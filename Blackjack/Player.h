@@ -4,5 +4,7 @@
 
 class Player : public Participant
 {
+public: 
+	void GiveCard(Card* card);
 };
 

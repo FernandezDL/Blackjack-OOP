@@ -21,11 +21,11 @@ void Graphics::PrintCardFace(std::ostream& os, int value) const
     int left = (innerWidth - (int)v.size()) / 2;
     int right = innerWidth - (int)v.size() - left;
 
-    os << "+-------+\n";
+    os << "---------\n";
     os << "|       |\n";
     os << "|       |\n";
     os << "|" << std::string(left, ' ') << v << std::string(right, ' ') << "|\n";
     os << "|       |\n";
     os << "|       |\n";
-    os << "+-------+\n";
+    os << "---------\n";
 }
