@@ -2,17 +2,6 @@
 #include "Utils.h"
 #include <string>
 
-void Graphics::PrintCardBack() const
-{
-    LOG_LN("---------");
-    LOG_LN("|#######|");
-    LOG_LN("|#######|");
-    LOG_LN("|#######|");
-    LOG_LN("|#######|");
-    LOG_LN("|#######|");
-    LOG_LN("---------");
-}
-
 void Graphics::PrintCardFace(int value) const
 {
     STRING v = std::to_string(value);
@@ -21,11 +10,12 @@ void Graphics::PrintCardFace(int value) const
     int left = (innerWidth - (int)v.size()) / 2;
     int right = innerWidth - (int)v.size() - left;
 
-    LOG_LN("---------");
+    LOG_EMPTY_LN;
+    LOG_LN(" _______");
     LOG_LN("|       |");
     LOG_LN("|       |");
     LOG_LN("|" << STRING(left, ' ') << v << STRING(right, ' ') << "|");
     LOG_LN("|       |");
     LOG_LN("|       |");
-    LOG_LN("---------");
+    LOG_LN("|_______|");
 }

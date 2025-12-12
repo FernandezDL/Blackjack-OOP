@@ -4,11 +4,6 @@
 void Participant::GiveCard(Card* c)
 {
     hand->AddCard(c);
-
-    if (OnDisplayCard) 
-    {
-        OnDisplayCard(c->GetValue());
-    }
 }
 
 // Returns Participant's Hand

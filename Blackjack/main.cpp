@@ -15,6 +15,10 @@ int main()
 	bool isGameOver = false;
 	bool isDealerWin = false;
 
+	INSTRUCTIONS();
+	PAUSE();
+	CLEAN();
+
 	game.Start();
 	LOG_LN("Starting game!");
 
@@ -25,39 +29,52 @@ int main()
 		while (counter < initialCardsPerParticipant)
 		{
 			game.DealToPlayer();
-			// TODO: Print Player's Card's value
-
 			game.DealToDealer();
-			// TODO: Print first Dealer's Card
+
 			counter++;
+			PAUSE();
 		}
 
-		// Player's turn
-		game.UpdateCurrentTurn(CurrentTurn::Input);
-		STRING continueInput;
-		do
+		isGameOver = game.CheckLoseCondition(gameEndCondition);
+
+		if (!isGameOver) 
 		{
-			CONTINUE_INPUT(continueInput);
-			if (continueInput == "y")
-			{
-				game.DealToPlayer();
-				//TODO: Print total Player's Hand value
-				continueInput = "";
-			}
+			LOG_SPACER2_LN;
+			LOG_LN("\t\tPLAYER'S TURN");
+			LOG_SPACER2;
 
-			isGameOver = game.CheckLoseCondition(gameEndCondition);
-			if (isGameOver) break;
+			// Player's turn
+			game.UpdateCurrentTurn(CurrentTurn::Input);
+			STRING continueInput;
+			do
+			{
+				CONTINUE_INPUT(continueInput);
+				if (continueInput == "y")
+				{
+					CLEAN();
+					game.DealToPlayer();
+
+					continueInput = "";
+				}
+
+				isGameOver = game.CheckLoseCondition(gameEndCondition);
+				if (isGameOver) break;
+			}
+			while (continueInput != "n");
 		}
-		while (continueInput != "n");
 
 		if (!isGameOver)
 		{
+			CLEAN();
+			LOG_SPACER2_LN;
+			LOG_LN("\t\tDEALER'S TURN");
+			LOG_SPACER2;
+
 			// Dealer's turn
 			game.UpdateCurrentTurn(CurrentTurn::AI);
 			do
 			{
 				game.DealToDealer();
-				// TODO: Print total Dealer's Hand value
 
 				isDealerWin = game.CheckDealerWin(gameEndCondition);
 				if (isDealerWin) break;
@@ -66,16 +83,28 @@ int main()
 
 			if (isDealerWin)
 			{
-				// TODO: Print player lose
+				// Dealer reached 21
+				LOG_SPACER_LN;
+				LOG_LN("Dealer reached 21");
+				LOG_LN("DEALER WON");
+				LOG_SPACER;
 			}
 			else
 			{
-				// TODO: Print player win
+				// The dealer went over 21
+				LOG_SPACER_LN;
+				LOG_LN("Dealer's hand value is above 21");
+				LOG_LN("PLAYER WON");
+				LOG_SPACER;
 			}
 		}
 		else
 		{
-			// TODO: Print player lose
+			// The player went over 21
+			LOG_SPACER_LN;
+			LOG_LN("Players's hand value is above 21");
+			LOG_LN("DEALER WON");
+			LOG_SPACER;
 		}
 
 		STRING playAgainInput;
@@ -88,6 +117,8 @@ int main()
 			deal = false;
 			isGameOver = false;
 			isDealerWin = false;
+			game.ResetGame();
+			CLEAN();
 		}
 	}
 

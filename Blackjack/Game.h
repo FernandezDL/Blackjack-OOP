@@ -22,6 +22,7 @@ public:
 	void DealToPlayer();
 	void DealToDealer();
 	void Start();
+	void ResetGame();
 	void UpdateCurrentTurn(CurrentTurn current);
 	bool CheckLoseCondition(int loseCon);
 	bool CheckDealerWin(int winCon);
