@@ -2,6 +2,7 @@
 
 #pragma once
 
+// Libraries
 #include <iostream>
 #include <limits>
 #include <random>
@@ -70,7 +71,6 @@ system("cls");
 #define MAKE_SHARED(X) std::make_shared<X>
 
 // Project Specifics
-
 #define CONTINUE_INPUT(CONTINUE)\
 while (CONTINUE != "n" && CONTINUE != "y")\
 {\

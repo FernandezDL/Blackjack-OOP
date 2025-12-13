@@ -19,6 +19,7 @@ int Hand::GetValue() const
 	return value;
 }
 
+// Returns the cards of the Hand
 VECTOR(Card*) Hand::GetCards() const
 {
 	return cards;

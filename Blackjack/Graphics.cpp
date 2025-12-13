@@ -2,6 +2,7 @@
 #include "Utils.h"
 #include <string>
 
+// Helper function to print the card graphic
 void Graphics::PrintCardFace(int value) const
 {
     STRING v = std::to_string(value);

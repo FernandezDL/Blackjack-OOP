@@ -60,11 +60,14 @@ bool Game::CheckLoseCondition(int loseCon)
 	}
 }
 
+// Cheks if the dealer has won the game
 bool Game::CheckDealerWin(int winCon)
 {
-	return dealer.GetHand()->GetValue() == winCon;
+	// returns true if the dealer hand value equals 21
+	return dealer.GetHand()->GetValue() == winCon; 
 }
 
+// Returns who's turn is it
 CurrentTurn Game::GetCurrentTurn()
 {
 	return currentTurn;
